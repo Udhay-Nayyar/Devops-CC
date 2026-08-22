@@ -1,0 +1,72 @@
+fancy terms but you should know the meaning 
+
+
+Packet - data which we share over the internet 
+         it is usually a big chunk so sending that all together at once will be bit trouble full for us then its better we break that into smaller 
+         parts and send it over the internet 
+         easy now these packets are nothing but just a these smaller parts 
+
+Latency - Ek puri ki puri roundtrip when you send something over the internet >>> what ever time this full activity take this 
+                                                                                            ----
+          this time take is latency 
+
+
+Bandwidth - ek given time kai ander kitna how much message can be send over the internet 
+jitter - variation cause do latency ...
+
+
+
+
+Physical items you should know
+-----------------------------
+router 
+This is present in your home 
+now think why do we need this >> what ever request you should to the internet it need to go it its particular service provider  
+right ?
+this is where router will come in the picture and route our request to the right internet service provider 
+
+
+switch 
+when we talk about large data center this is used their not in our homes usually as their are a lot of node that need to be connected with each other in that case we will use the switch 
+
+
+hub 
+   This is a dam device that was being use when switch was not discovered 
+
+racks  
+   🤣place where all these physical items are kept 
+
+
+Data centers 
+here we all we have a lot of computers you cannot imagine the are 24/7 on which means they will produce a lot of heat now in order to reduce that we will we use AC 
+but good people came with the idea to put all this under the water (Microsoft literally did it)
+
+
+hoop - what the hell is this hope
+
+
+imagine 
+
+
+
+you are at you home (Punjab)
+---------------------------------------------> want to get data from New York --------------> your request cannot go directly to destination 
+it will take help of internet service providers to  reach the destination ---------------> this process of changing the internet service provider to reach the destination is called 
+Hoops .
+
+
+
+cdn - content delivery network 
+      (help us to get the static data)
+present all over the globe to help us to access the data very fast 
+
+main data center 
+edge location (caching)  temp storage of keep the data so that we can literally access the data fast | very * 10 fast 
+local zone (edge computing )
+
+
+
+
+region ----------------
+      availability zone (i think this will help you to reduce the load that is present over the region by the client)
+-----------------------
