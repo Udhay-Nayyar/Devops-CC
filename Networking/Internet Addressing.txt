@@ -1,0 +1,67 @@
+Internet Addressing 
+
+laymen terms 
+case 
+that every person in todays word has phone number (UNIQUE)
+now if you to connect with the person  you just dial their number and give your message to them 
+in this same way 
+
+Internet Addressing
+-------------------
+when the different devices want to communicate with each other over the internet > they need internet addressing for that 
+
+
+IPv4 vs IPv6
+----
+this is a collection of IP addresses that devices over the internet can it . so that they can be identified uniquely over the internet 
+the number of IP address this provides is --> 4.3 billon 
+                                              this was not able to give IP addresses to every device that is present over the internet 
+
+
+So the guys came up with the IPv6 plan which has around - 340 undecillion of Ip Addresses 
+this is just tooo much Ip address ..........
+
+
+Subnet (so people came up with this kind of idea)
+make sub internet that are completely independent of each other and this network will follow the Ipv4 
+>>>>>>>>> currently this is being used in today world 
+
+------------------------------------
+CIDR                               |
+class less inter domain routing    | --> this will help you to  find the ip address with each sub net with their ranges 
+class less inter domain range      | 
+------------------------------------
+
+
+
+
+total Ip addresses 2^(32-n)
+what is this mother***** n ?
+                        ---
+                        this x in the equation baby (0.0.0.0/x)
+
+
+ipv4 notation 
+_._._._/0 ---> 4.3 billon IP address
+_._._._/16 ---> 65K billon IP address
+_._._._/32 ---> 0 billon IP address
+
+
+
+0.0.0.0/x ---> network address 
+LAST Address ----> broadcast address 
+
+
+so from above the total usable Ip address 
+2^(32-n) - 2 
+
+
+
+domain name system 
+
+just like the telephone book that were  present before gen-z landed on this planet 
+this is a system where every Ip address in this world has got a name register here 
+
+
+
+---- download notes online ---------- done 
