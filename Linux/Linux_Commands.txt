@@ -1,0 +1,90 @@
+Linux Commands 
+
+
+User Management 
+
+
+uname -> it will provide us the underline system name 
+uptime -> the time when the device was up for the first time 
+date -> current date and time 
+who -> list out the users of that machine 
+whoami -> what id the name of the current user 
+which -> (very important) to know the loaction of the resources present in the linux 
+id -> this will help us to display user id and group ids
+sudo -> when ever you try to do any task for which we need the root >> basically it is not allowing you to do that task as it is only permited to root so use sudo their 
+reboot / shutdown / update
+apt -> installing, updating, removing, and managing software packages
+
+
+
+user and group managent 
+useradd  -> adding another user to the linux 
+sudo useradd __Name_Of_The_User__
+
+
+cat /etc/passwd
+This is where you will get the list of the local user 
+su -> switch user 
+passwd usename -> this is will help you to set the password of that user name and dthat needs to be filled every time you enter the user
+exit -> exit any user to go back to the orignal one i.e ubuntu 
+groupadd -> we can create a group 
+gpassword -a | -M  -> with  help of this we can add single pr multiple user to a particular group 
+⚠️ One important thing: -M sets the group's member list, rather than simply adding to the existing list. So if developers already has roshan, using -M udhay,niraj developers can replace the supplementary members with udhay and niraj.
+userdel -> delete the specfic user 
+groupdel -> delete the specfic group 
+
+
+
+Permission commands 
+How do linux use the permission system ? 
+it uses R (read) , W (write) , X (execution)
+ls -l -> detailed description about the files and folders present in that directory 
+chmod XXX name_of_the_directory (must know what is behind the XXX logically)
+chown -> change the owner of the any directory 
+chgrp -> change the grp that the directory belongs to 
+sudo chown udhay file.txt
+unmask -> This help us to set few default permission that will be give to any directory created in the future 
+
+Remember 
+umask → controls default permissions
+chmod → changes permissions of existing files
+chown → changes ownership
+
+
+
+Zip and Compression commands
+step 1  - Let us first zip a folder 
+          
+
+| Feature      | `.zip`                      | `.tar`                          | `.tar.gz`                           |
+| ------------ | --------------------------- | ------------------------------- | ----------------------------------- |
+| Main tool    | `zip` / `unzip`             | `tar`                           | `tar`                               |
+| What it does | **Archive + compress**      | **Archive only**                | **Archive + compress**              |
+| Compression  | ✅ Yes                     | ❌ No                           | ✅ Yes (`gzip`)                      |
+| Example file | `files.zip`                 | `files.tar`                     | `files.tar.gz`                      |
+| Create       | `zip files.zip file1 file2` | `tar -cf files.tar file1 file2` | `tar -czf files.tar.gz file1 file2` |
+| Extract      | `unzip files.zip`           | `tar -xf files.tar`             | `tar -xzf files.tar.gz`             |
+| `c` means    | —                           | **create**                      | **create**                          |
+| `x` means    | —                           | **extract**                     | **extract**                         |
+| `f` means    | —                           | **file**                        | **file**                            |
+| `z` means    | —                           | —                               | **gzip**                            |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
