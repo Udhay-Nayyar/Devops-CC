@@ -1,0 +1,114 @@
+some terms that might look diff but they all means the same 
+
+block   |
+disk    |  they all means storage 
+volume  |
+
+
+
+
+
+Goal 
+
+make 3 block 
+1. 10gb 
+2. 12gb
+3. 14gb 
+
+
+then attaching and them mounting 
+
+
+route -> command that gives us the kernel Ip routing table 
+ 
+
+- create the elastic block stores
+- make sure to match the region 
+- now make them attach to the instance 
+
+
+
+2 important commands that we keep using is 
+1. lsblk
+2. df -h 
+
+
+Attacing the volumns has been taken care of 
+
+
+what is the diff between 
+physical volumn and logical volumn in linux 
+
+1.  A physical volume is an actual storage device that Linux/LVM can use
+2. A logical volume is a virtual disk created from a Physical Volume through LVM
+
+
+
+10 GB EBS disk
+       ↓
+      PV
+       ↓
+  ┌──────────────┐
+  │ Volume Group     │
+  │                  │
+  │  ┌────────┐   │
+  │  │ 5 GB     │   │ ← Logical Volume
+  │  ├────────┤   |
+  │  │ 5 GB     │   │ ← Logical Volume
+  │  └────────┘   │
+  └──────────────┘
+
+
+
+what was the process ?  
+create a ebs ---> physical volumn ---> volumn grp ---> logical volumn 
+
+
+sudo pvcreate /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1   ---->  creating the physical volumn 
+sudo vgcreate tws_vg /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1  ----> creating the volumn grp 
+sudo lvcreate -L 10G -n tws_ls tws_vg >>> this will create the logical volumn 
+
+
+ make the directory first 
+ sudo mkfs.ext4 /dev/tws_vg/tws_ls
+ sudo mount /dev/tws_vg/tws_lv /mnt/tws_lv_mount
+
+check by using lsblk or df -h
+
+
+AWS
+│
+├── EBS Volume
+│
+│   ATTACH
+│      ↓
+│
+EC2
+│
+├── /dev/nvme1n1
+├── /dev/nvme2n1
+└── /dev/nvme3n1
+       │
+       │ pvcreate
+       ↓
+      PVs
+       │
+       │ vgcreate
+       ↓
+    tws_vg
+       │
+       │ lvcreate
+       ↓
+    tws_ls
+       │
+       │ mkfs.ext4
+       ↓
+      ext4
+       │
+       │ mount
+       ↓
+/mnt/tws_lv_mount
+
+
+
+we can aslo extend the volumn using lvextend command
