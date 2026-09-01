@@ -1,0 +1,78 @@
+ping is a Linux networking command used to check whether a destination is reachable over a network and to measure the round-trip time (RTT) for packets.
+icmp -> internet control message protocol 
+
+ping flipkart.com >>>>> command <<<<<
+       ↓
+DNS → 103.243.32.90
+       ↓
+Send ICMP request
+       ↓
+Did we receive ICMP reply?
+       ↓
+   YES → reachable
+   NO  → no response
+
+
+
+
+
+1. netstat -> netstat displays network connections, listening ports, routing information, and network interface statistics.
+
+2. ifconfig 
+
+
+| Part            | Meaning                             |
+| --------------- | ----------------------------------- |
+| `eth0`          | Network interface                   |
+| `inet`          | IPv4 address                        |
+| `172.31.47.253` | Your machine's private IPv4 address |
+| `netmask`       | Defines the network/subnet          |
+| `ether`         | MAC address                         |
+
+3. traceroute -> this will tell about how many hops with the specified ip addrersses 
+4. mtr -> ping + traceroute (reccomended)
+5. nslookup -> this will give you the public ips in ipv4 and ipv6  of what ever domain you ask . make sure domain exist 
+6. telnet XXXXX port_number
+
+ping google.com
+      ↓
+ICMP
+      ↓
+"Can I reach it?"
+
+telnet google.com 443
+      ↓
+TCP
+      ↓
+"Can I connect to THIS PORT?"
+
+
+7. hostname -> this will give you the hostname of the machine 
+8. ip address show || ip a 
+ 
+
+| Command           | Status          | Purpose                                |
+| ----------------- | --------------- | -------------------------------------- |
+| `ifconfig`        | Older/legacy    | View/configure network interfaces      |
+| `ip address show` | Modern          | View network interfaces & IP addresses |
+| `ip a`            | Modern shortcut | Same as `ip address show`              |
+
+
+
+9. ss -> same as netstat 
+10. iwconfig -> iw is used to view and configure wireless (Wi-Fi) network interfaces on Linux.
+
+11. whois _____ -> this will provide us all the details of the domain you specify 
+12. arp -> address resolution protocal 
+13. ifplugstatus -> instead of this you can use ipaddress show or ip a or ifconfig
+
+
+Networking interface  ?? 
+its like a card that contains ip and mac address that think through which we can transfer the data 
+
+14. curl to  get response form the server 
+    curl -X GET API_LINK
+
+15 wget Link -> this will help you to downlad things via the link from the internet
+16. watch -> used when we wnt things to get update after every 2 sec and keep getting the updates
+
