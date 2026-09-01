@@ -1,0 +1,22 @@
+Case 1 : Coping the file from the local machine to the remote location 
+
+LOCAL MACHINE                    REMOTE MACHINE
+Windows laptop   ---- SCP --->   EC2 Linux
+
+scp -> securly copy is needed 
+-i  -> Use this SSH private key to authenticate me.
+
+rest you can understand on your own 
+scp -i "C:\Users\udhay\Downloads\linux-for-devops-key.pem" "C:\Users\udhay\OneDrive\Desktop\DEVOPS🪦\Linux\demoFile.txt" ubuntu@13.60.82.240:/home/ubuntu/
+                                                             ------------------source-----------------------------        -------destination-------------
+
+
+Case 2 : Opposite of case 1 
+
+REMOTE MACHINE                   LOCAL MACHINE
+EC2 Linux       ---- SCP --->    Windows laptop
+
+
+just reverse the source and destination 
+
+scp -i "C:\Users\udhay\Downloads\linux-for-devops-key.pem" ubuntu@13.60.82.240:/home/ubuntu/demo_from_remote.txt "C:\Users\udhay\OneDrive\Desktop\DEVOPS🪦\Linux\"
