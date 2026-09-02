@@ -1,0 +1,23 @@
+certbot 
+ssl 
+tls 
+
+
+
+fire wall 
+http vs https 
+port 
+
+
+
+
+security  -> protocol  +  ip + port 
+
+https 
+ssh 
+smpt 
+
+
+
+virtual private cloud 
+nat gateway 

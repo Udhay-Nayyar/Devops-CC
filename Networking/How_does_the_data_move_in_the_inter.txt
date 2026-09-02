@@ -1,0 +1,32 @@
+How does the data move in the internet 
+
+OSI MODEL 
+
+Application Layer 
+Presentation Layer 
+Session Layer 
+Transfer Layer 
+Network Layer 
+Data Link Layer 
+Physical Layer
+
+
+
+TCP / IP MODEL 
+
+
+Application Layer 
+                 Application Layer 
+                 Presentation Layer 
+                 Session Layer 
+Transport Layer
+                 Transfer Layer 
+Internet Layer 
+                 Network Layer 
+N/W Access Layer
+                 Data Link Layer  
+                 Physical Layer
+
+
+
+make few inter view questions on this 
