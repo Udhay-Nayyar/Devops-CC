@@ -1,0 +1,77 @@
+what is docker ? 
+what is the difference between virtual machines and docker ?
+what is docker architecture ?
+-> Docker Engine , Docker Demon , Docker CLI (mainly so talk about these only)
+   Docker Client , Docker Desktop 
+
+
+must know this part of the story 
+
+
+when ever now after making the ec2 instance you try to run the docker commands on the terminal it will not allow you that 
+
+step 1 
+check by running the docker command 
+>>> permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+
+
+step 2
+to solve this we will modify the user by adding that specific user to the docker group 
+>> (command) sudo usermod -aG docker $user
+
+
+step 3 
+you must not go straight and try the docker commands it will still not work 
+YOU MUST REFRESH THE COMMAND 
+
+
+>>> command -> sudo newgrp docker
+
+if password not set by you use >> sudo passwd docker >> then try 
+
+
+
+step 4 >> now you can use the docker commands easily 
+
+
+
+============= docker images ==========================
+              They can be reffered as the blue print of the container 
+          
+          docker file 
+(instruction to build docker file)
+               | 
+               |
+         docker image
+    (blueprint of the container)
+               |
+               |
+         Docker Container
+
+
+
+
+
+Time to do it practically  ---------------------------------------
+
+
+Basic
+----------------------
+dcoker pull hello-world
+docker run hello-world 
+----------------------
+
+
+
+now its time for mysql 
+
+
+docker pull mysql 
+docker run -e MYSQL_ROOT_PASSWORD='U8d7h7ay;' mysql:latest
+------------------------------------------ this commands ends you in the infinte terminal as the container runs in the attached mode 
+
+solution run it detach mode
+ docker run -d -e MYSQL_ROOT_PASSWORD='U8d7h7ay;' mysql:latest
+            --
+
+Done
