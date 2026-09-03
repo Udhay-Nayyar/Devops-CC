@@ -1,0 +1,51 @@
+we are creating our own docker file 
+
+
+Repo link --> https://github.com/LondheShubham153/simple-java-docker.git
+
+added a docker file to the project 
+===========================
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY src/Main.java /app/Main.java
+RUN javac Main.java
+CMD ["java","Main"]
+===========================
+
+
+time to build this file 
+
+docker build -t java_app .
+
+explain -- 
+docker build → build a Docker image
+-t java_app → give the image the name/tag java_app
+. → use the current directory as the build context (where Docker looks for your Dockerfile and src/)
+
+
+
+docker run java_app:latest
+
+
+how in this fcking world does the devops person will get know what images to use for this project >>>>>>>>>>>>>>>>
+
+we need to understand the requirment of the project 
+
+Example
+
+
+What does the app need?
+        ↓
+Java 17
+        ↓
+JDK or JRE?
+        ↓
+JDK
+        ↓
+Which maintained image?
+        ↓
+Check Docker Official Images
+        ↓
+Which tag?
+        ↓
+17-jdk-alpine
