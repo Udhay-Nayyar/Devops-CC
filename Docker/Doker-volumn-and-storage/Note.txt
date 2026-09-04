@@ -1,0 +1,48 @@
+Docker volume and storages 
+
+just image that you are having the docker networking case 
+
+1. flask app 
+2. MySQL 
+
+These 2 containers we communicating with each other using the networking concept 
+
+just imagine case comes where the sql container crashes (any reason)
+now the data is gone which is bad right 
+
+
+solution -> docker volume and storage concept 
+
+
+how can this concept bloody help us ??
+host machine we make a storage or a volume that we attach to these container now when ever the container crashes the data would be stored in the host machine ki volume now we can recover it easily 
+
+lets try it practically 
+
+first see the problem 
+
+if you will now stop and remove that container then all the data present with in the sql container will say BYEE
+
+so let implement the solution practically 
+
+
+first create a volume 
+-> docker volume create mysql-volume
+To check what you have created do -> docker volume ls
+
+
+if you want to inpect the volume 
+-> docker inspect XXXXx
+
+This will give you very important thing mounting path (we will use that)
+
+/var/lib/docker/volumes/mysql-volume/_data (mounting path)
+
+Just remove the old container and make a new container just make sure it is mounted ...
+-v mysql-data:/var/lib/docker/volumes/mysql-volume/_data
+
+
+now save kro thora data then stop the container then run the container 
+
+WOW data is now persist
+Done babu 
