@@ -1,5 +1,6 @@
 we are creating our own docker file 
 
+CASE 1 JAVA PROJECT
 
 Repo link --> https://github.com/LondheShubham153/simple-java-docker.git
 
@@ -49,3 +50,7 @@ Check Docker Official Images
 Which tag?
         ↓
 17-jdk-alpine
+
+
+
+CASE 2 PYTHON PROJECT
