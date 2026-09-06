@@ -1,0 +1,105 @@
+Why Kubernetes ?
+    ----------
+        
+Know about Monolithic and Microservices
+           ----------     -------------
+   all the services         all the service are now independent from each other 
+   are kept at one place
+
+
+
+if you want to manage these services how do we do that ----> Kubernetes
+
+Kubernetes Architecture ?
+
+Master Node             
+API server -  communication channel between the master and worker   
+controller manage -  manages things at the master side
+scheduler  - this will schedule the formation of the container              
+etcd - act as the database on the master side
+
+
+
+
+Worker side 
+Pods - it is like a unit where grp of container runs togther 
+Server Proxy - some one from out side the organisation want to access the conatiner services will take help from this server proxy 
+Kubelet - acts as the manager on the worker side
+
+How do these node communicate with each other 
+using the CNI network
+
+
+if you want to perform anything on these node take help of the kubectl
+ 
+
+
+------- Try making it on the paper with any reference --------
+
+First let learn how to make the cluster 
+
+
+
+How many ways of creating the cluster 
+
+Kubeandm
+Minikube
+KIND Cluster
+EKS / AKS / GKE
+
+
+
+
+Lets start with KIND Cluster that to locally
+install kubectl , docker , kind via the repo -https://github.com/LondheShubham153/kubestarter.git
+
+now for this you should do it all practice the  making of the cluster that to local 
+
+
+After you have practiced making the cluster now the next thing 
+
+
+Docker Containers
+-----------------
+       |
+       |
+      Pods
+       |
+       |
+     deployment
+       |
+       |
+     services
+       |
+       |
+     Sweet User 
+-----------------------------------------------
+                |
+                |
+                |
+Kubernetes will have many of these not only one
+due to which we will have the issue that in kubernetes soo many pods , services will be very hard to maintain right 
+Solution Namespace
+
+
+
+> kubectl get ns 
+> kubectl get namespace
+------------------------ read how many name space we have
+
+Note we also have a default name space called as default 
+
+> kubectl get pods
+------------------------ ready kro bhai kitna pods are running right now 
+                         this will go search for the pods in the default namespace 
+but if you want to check the pods in the particular namespace then the commands become
+> kubectl get pods -n "name of the namespace"
+
+
+how do we create a name space ?
+> kubectl create ns "name of the namespace"
+
+
+
+now in the namespace you have just created we will create the pods , deployment , services in this namespace 
+so lets goo
