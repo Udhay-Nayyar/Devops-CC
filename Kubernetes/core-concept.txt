@@ -36,15 +36,19 @@ if you want to perform anything on these node take help of the kubectl
 
 ------- Try making it on the paper with any reference --------
 
-First let learn how to make the cluster 
+First lets learn how to make the cluster 
+
+
+First what is cluster
+it is the group of the nodes i.e 1 master and  M worker node 
 
 
 
 How many ways of creating the cluster 
 
 Kubeandm
-Minikube
-KIND Cluster
+Minikube DONE
+KIND Cluster DONE
 EKS / AKS / GKE
 
 
@@ -123,3 +127,98 @@ using command
 
 
 ############################# I know these commands are not feel good because it very manual work  in order to avoid that we will make yaml file that consist of all the commands (automation) yml or manifest file is what we make ################################
+
+
+
+
+
+describe command 
+exec command to get into the pods 
+
+
+deployment ?
+create a yml file for this 
+
+
+Note when we need grp of pods if the traffic is going to be  huge (big billion days sale)
+
+First understant the work Replication Controller ?
+This gods child is resposible for managing the replicas of the pods 
+
+
+
+we can achive this using the ReplicaSet | StatefulSet |  Deployement (Rolling Updates)
+                             ---------------------------------------
+                             all of these do the same task but in different style 
+
+
+check the yml file for the developement at the time frame of 1:52:00
+
+
+One question might have come after creating the manifest file how do we run that 
+>kubectl apply -f name_of_the_file.ymlm 
+ 
+
+what if i want to delete that manifest file ?
+> kubectl delete -f name_of_the_file.yml
+  
+
+after this try to ready the deployment and pods using get commands
+
+
+
+
+Now finally time has come to scale the container 
+> kubectl scale deplovemnt/nginx-development -n nginx --replicas=5
+
+now go check the pods in specfic namespace and be happy baby 
+
+
+Time to practice the rolling updates
+> kubctl get pods -n nginx -o wide 
+ --------------------------------- if you want the more information about the pods this is just like ls ka ls -l version 
+
+
+we  will use kubectl roll out command
+
+
+
+make a case where you have mutilple pods 
+
+> kubectl set image deployment/nginx-deployment -n nginx nginx=nginx:1.27.3
+> kubectl get pods -n nginx 
+
+Now what is rolling updates ?
+it will never close or shutdown all the containers at once 1
+
+
+Time to apply the replica set it will be almost same yml  file as of the development just change the dev to rep 
+and rolling update feature will be misssing 
+ 
+
+
+Deamnset 
+atleast one pod must be running at each node 
+Try it practically 
+
+
+
+
+What is Jobs >> it is a task which we accept to get over after its job is completed not the task which goes on forever
+
+Try practically using jobs and                                 cronjobs 
+                      ----                                     --------
+                     single job to be done and finish          single job needs to be done a particular time again and again 
+
+
+
+
+
+
+
+
+
+
+
+
+
