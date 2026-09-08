@@ -103,3 +103,23 @@ how do we create a name space ?
 
 now in the namespace you have just created we will create the pods , deployment , services in this namespace 
 so lets goo
+
+
+
+> kubctl run nginx --image=nginx
+-------------------------------- This commads helps us to create the pods for the nginx 
+their is a catch here that this will create a pod no doubt but this will add the pods in the default name space
+so in order to avoid that we will use the command that is written below 
+
+> kubctl run nginx --image=nginx -n nginx
+                                    -----
+> kubectl delete pod nginx  
+
+
+
+now try to locate the nginx pod in the nginx namespace 
+using command
+> kubectl get pods -n nginx
+
+
+############################# I know these commands are not feel good because it very manual work  in order to avoid that we will make yaml file that consist of all the commands (automation) yml or manifest file is what we make ################################
