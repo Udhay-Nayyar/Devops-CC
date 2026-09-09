@@ -1,0 +1,34 @@
+Now think that we have a machine that is running a lot of pods running and the thing that can happens is that a pod might get crashed due to any of the reason right ? (we are talking about the data that is present in pods)
+
+
+
+steps
+make sure your development workload is on    |
+then delete on pod for them                  |  This is the example of the auto healing
+see it will create a pod by itself           |
+
+pr bc data to chala gya naa 
+
+
+so to just aoid this baby problem we have the dady solution that is attach that pod with the host machine to make the data persist 
+
+
+Persistence Volume and Persistence Volume Claim 
+make the yml file for the Persistence Volume
+- take help from the internet ot time frame 2:48:00 from the video 
+
+after you have created the Persistence Volume then check it using the command below 
+> kubectl get pv
+
+
+
+the storage is now avaliable in the host machine to make it useful the host should claim that 
+
+rem - for that again write the yml file for Persistence Volume Claim 
+and after the file is ready then apply that now that will not be avaliable it would be bound 
+Time frame is 2:57:00 (this framem aslo have the error that is intersting can be useful to know)
+
+Quesstion 
+Persistence Volume VS Persistence Volume Claim 
+
+Should know the meaning and use of the descibe command 
