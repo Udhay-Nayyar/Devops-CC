@@ -10,7 +10,7 @@ see it will create a pod by itself           |
 pr bc data to chala gya naa 
 
 
-so to just aoid this baby problem we have the dady solution that is attach that pod with the host machine to make the data persist 
+so to just avoid this baby problem we have the daday solution that is attach that pod with the host machine to make the data persist 
 
 
 Persistence Volume and Persistence Volume Claim 
@@ -32,3 +32,149 @@ Quesstion
 Persistence Volume VS Persistence Volume Claim 
 
 Should know the meaning and use of the descibe command 
+
+
+
+| Path                    | Think                               |
+| ----------------------- | ----------------------------------- |
+| `/usr/share/nginx/html` | 🌐 Nginx website                    |
+| `/etc/nginx`            | ⚙️ Nginx configuration              |
+| `/var/log/nginx`        | 📜 Nginx logs                       |
+| `/tmp`                  | 🗑️ Temporary files                 |
+| `/home`                 | 👤 User home directories            |
+| `/etc`                  | ⚙️ System/application configuration |
+| `/var`                  | 📦 Variable data/logs               |
+
+
+practical 
+
+deployment file 
+> cat nginx-deployment.yml
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /var/www/html
+            name: my-volume
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: local-pvc
+
+
+
+
+pv file 
+> cat local-pv.yml
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: local-pv
+  namespace: nginx
+  labels:
+    app: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /mnt/data
+
+
+
+pvc file 
+
+> cat local-pvc.yml
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: local-pvc
+  namespace: nginx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+
+
+
+
+
+
+At last after all these thing are done check weather the mountind is done using the describe command 
+
+
+kubectl get nodes
+kubectl get namespaces
+
+kubectl apply -f local-pv.yml
+kubectl get pv
+kubectl describe pv local-pv
+
+kubectl apply -f local-pvc.yml -n nginx
+kubectl get pvc -n nginx
+kubectl describe pvc local-pvc -n nginx
+
+kubectl get pv
+
+kubectl apply -f controller/nginx-deployment.yml -n nginx
+kubectl get deployments -n nginx
+kubectl get pods -n nginx
+kubectl get pods -n nginx -w
+
+kubectl describe deployment nginx-deployment -n nginx
+kubectl describe pod <pod-name> -n nginx
+
+kubectl get pod <pod-name> -n nginx -o yaml | grep -A 5 "persistentVolumeClaim"
+
+kubectl get pods -A -o yaml | grep -B 10 -A 10 "local-pvc"
+
+kubectl exec -it <pod-name> -n nginx -- sh
+ls -la /var/www/html
+echo "PVC IS WORKING" > /var/www/html/test.txt
+cat /var/www/html/test.txt
+exit
+
+kubectl delete pod <pod-name> -n nginx
+kubectl get pods -n nginx -w
+kubectl exec -it <new-pod-name> -n nginx -- cat /var/www/html/test.txt
+
+kubectl delete pvc local-pvc -n nginx --wait=false
+kubectl delete pv local-pv --wait=false
+
+kubectl get pvc -n nginx
+kubectl get pv
+
+kubectl get pvc local-pvc -n nginx -o yaml
+kubectl get pv local-pv -o yaml
+
+kubectl get deployments
+kubectl get pods
+kubectl get deployments -n nginx
+kubectl get pods -n nginx
