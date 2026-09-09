@@ -1,0 +1,34 @@
+First make a service yml file 
+
+----------------------------------------------------------------
+
+>cat service.yml
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+  namespace: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+
+-------------------------------------------------------------------
+
+
+
+now time for port-forwarding
+
+
+kubctl port-forward service/nginx-service 8080:80 -n nginx
+
+
+Must know why we need port forwarding 
+
+hogya bhai kro ab localhost:8080
